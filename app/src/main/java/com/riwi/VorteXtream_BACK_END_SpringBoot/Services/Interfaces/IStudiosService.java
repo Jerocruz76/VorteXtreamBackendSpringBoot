@@ -1,0 +1,17 @@
+package com.riwi.VorteXtream_BACK_END_SpringBoot.Services.Interfaces;
+
+import com.riwi.VorteXtream_BACK_END_SpringBoot.Entities.Studios;
+
+import java.util.List;
+
+public interface IStudiosService {
+
+    Studios create(Studios studios);
+
+    Studios update(Long studiosId, Studios updatedStudios);
+
+    List<Studios> readAll() throws Exception;
+
+    boolean getDeleteById(Long studiosId);
+
+}
