@@ -16,6 +16,8 @@ public class Cast {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     String id;
+    @Column(name="name", nullable = false)
+    String name;
     @Column(name = "url_image", nullable = false)
     String urlImage;
 }
