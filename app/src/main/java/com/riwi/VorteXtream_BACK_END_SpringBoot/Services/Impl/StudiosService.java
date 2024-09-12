@@ -4,11 +4,13 @@ import com.riwi.VorteXtream_BACK_END_SpringBoot.Entities.Studios;
 import com.riwi.VorteXtream_BACK_END_SpringBoot.Repositories.StudiosRepository;
 import com.riwi.VorteXtream_BACK_END_SpringBoot.Services.Interfaces.IStudiosService;
 import org.springframework.dao.DataAccessException;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
 
+@Service
 public class StudiosService implements IStudiosService {
 
     private final StudiosRepository studiosRepository;

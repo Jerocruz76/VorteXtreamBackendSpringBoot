@@ -19,18 +19,17 @@ public class DirectorController {
     }
 
     @PostMapping("/create")
-    public ResponseEntity<Directors> createDirector(@RequestBody Directors directors) {
+    public ResponseEntity<Directors> create(@RequestBody Directors directors) {
         try {
             Directors newDirector = directorsService.create(directors);
             return new ResponseEntity<>(newDirector, HttpStatus.CREATED);
         } catch (Exception e) {
             return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
         }
-
     }
 
     @GetMapping("/readAll")
-    public ResponseEntity<List<Directors>> getAllDirectors() {
+    public ResponseEntity<List<Directors>> getAll() {
         try {
             List<Directors> directors = directorsService.readAll();
             return new ResponseEntity<>(directors, HttpStatus.OK);
@@ -40,7 +39,7 @@ public class DirectorController {
     }
 
     @PutMapping("/update/{id}")
-    public ResponseEntity<Directors> updateDirector(@PathVariable("id") Long directorId,
+    public ResponseEntity<Directors> update(@PathVariable("id") Long directorId,
                                                 @RequestBody Directors updatedDirector) {
         try {
             Directors updated = directorsService.update(directorId, updatedDirector);
@@ -51,7 +50,7 @@ public class DirectorController {
     }
 
     @DeleteMapping("/delete/{id}")
-    public ResponseEntity<HttpStatus> deleteDirector(@PathVariable("id") Long directorId) {
+    public ResponseEntity<HttpStatus> delete(@PathVariable("id") Long directorId) {
         try {
             boolean deleted = directorsService.getDeleteById(directorId);
             if (deleted) {
