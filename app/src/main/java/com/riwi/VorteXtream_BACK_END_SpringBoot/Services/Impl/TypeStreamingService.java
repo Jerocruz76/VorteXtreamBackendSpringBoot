@@ -4,10 +4,11 @@ import com.riwi.VorteXtream_BACK_END_SpringBoot.Entities.TypeStreaming;
 import com.riwi.VorteXtream_BACK_END_SpringBoot.Repositories.TypeStreamingRepository;
 import com.riwi.VorteXtream_BACK_END_SpringBoot.Services.Interfaces.ITypeStreamingService;
 import org.springframework.dao.DataAccessException;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import java.util.*;
 
-
+@Service
 public class TypeStreamingService implements ITypeStreamingService {
 
     private final TypeStreamingRepository typeStreamingRepository;

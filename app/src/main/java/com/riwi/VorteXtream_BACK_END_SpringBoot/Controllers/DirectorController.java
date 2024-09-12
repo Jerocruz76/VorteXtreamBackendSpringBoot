@@ -19,7 +19,7 @@ public class DirectorController {
     }
 
     @PostMapping("/create")
-    public ResponseEntity<Directors> createDirector(@RequestBody Directors directors) {
+    public ResponseEntity<Directors> create(@RequestBody Directors directors) {
         try {
             Directors newDirector = directorsService.create(directors);
             return new ResponseEntity<>(newDirector, HttpStatus.CREATED);

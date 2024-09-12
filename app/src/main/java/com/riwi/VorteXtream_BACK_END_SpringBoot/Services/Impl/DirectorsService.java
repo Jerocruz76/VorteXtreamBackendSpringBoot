@@ -4,11 +4,13 @@ import com.riwi.VorteXtream_BACK_END_SpringBoot.Entities.Directors;
 import com.riwi.VorteXtream_BACK_END_SpringBoot.Repositories.DirectorsRepository;
 import com.riwi.VorteXtream_BACK_END_SpringBoot.Services.Interfaces.IDirectorsService;
 import org.springframework.dao.DataAccessException;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
 
+@Service
 public class DirectorsService implements IDirectorsService {
 
     private final DirectorsRepository directorsRepository;
