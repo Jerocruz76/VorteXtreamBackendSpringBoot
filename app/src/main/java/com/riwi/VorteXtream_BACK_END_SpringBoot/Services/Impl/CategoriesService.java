@@ -4,9 +4,9 @@ import com.riwi.VorteXtream_BACK_END_SpringBoot.Entities.Categories;
 import com.riwi.VorteXtream_BACK_END_SpringBoot.Repositories.CategoriesRepository;
 import com.riwi.VorteXtream_BACK_END_SpringBoot.Services.Interfaces.ICategoriesService;
 import jakarta.transaction.Transactional;
+import org.springframework.stereotype.Service;
 
-import java.util.Optional;
-
+@Service
 public class CategoriesService implements ICategoriesService {
 
     private final CategoriesRepository categoriesRepository;
@@ -43,17 +43,33 @@ public class CategoriesService implements ICategoriesService {
     }
 
     @Override
-    public void delete(String s) {
-
+    @Transactional
+    public boolean delete(String s) {
+        try{
+            categoriesRepository.deleteById(s);
+            return categoriesRepository.findById(s).isPresent();
+        }catch (Exception e){
+            throw new RuntimeException("Cannot delete by Id");
+        }
     }
 
     @Override
+    @Transactional
     public Categories getById(String s) {
-        return null;
+        try{
+            return categoriesRepository.findById(s).orElseThrow();
+        }catch (Exception e){
+            throw new RuntimeException("Cannot find category");
+        }
     }
 
     @Override
+    @Transactional
     public Categories getByName(String s) {
-        return null;
+        try{
+            return categoriesRepository.findByName(s).orElseThrow();
+        }catch (Exception e){
+            throw new RuntimeException("Cannot find category");
+        }
     }
 }
