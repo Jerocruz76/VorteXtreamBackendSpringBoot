@@ -4,11 +4,13 @@ import com.riwi.VorteXtream_BACK_END_SpringBoot.Entities.SubCategories;
 import com.riwi.VorteXtream_BACK_END_SpringBoot.Repositories.SubCategoriesRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
 
+@Service
 public class SubCategoriesService {
 
 

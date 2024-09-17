@@ -2,6 +2,7 @@ package com.riwi.VorteXtream_BACK_END_SpringBoot.Controllers;
 
 import com.riwi.VorteXtream_BACK_END_SpringBoot.Entities.Directors;
 import com.riwi.VorteXtream_BACK_END_SpringBoot.Services.Impl.DirectorsService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -12,11 +13,12 @@ import java.util.List;
 @RequestMapping("api/directors")
 public class DirectorController {
 
-    private final DirectorsService directorsService;
+    @Autowired
+    private DirectorsService directorsService;
 
-    public DirectorController(DirectorsService directorsService){
-        this.directorsService = directorsService;
-    }
+//    public DirectorController(DirectorsService directorsService){
+//        this.directorsService = directorsService;
+//    }
 
     @PostMapping("/create")
     public ResponseEntity<Directors> create(@RequestBody Directors directors) {

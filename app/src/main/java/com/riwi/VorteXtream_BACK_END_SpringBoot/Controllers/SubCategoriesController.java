@@ -15,7 +15,6 @@ public class SubCategoriesController {
 
     private final SubCategoriesService subCategoriesService;
 
-
     @Autowired
     public SubCategoriesController(SubCategoriesService subCategoriesService) {
         this.subCategoriesService = subCategoriesService;

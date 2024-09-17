@@ -11,7 +11,7 @@ import lombok.experimental.FieldDefaults;
 @FieldDefaults(level = AccessLevel.PRIVATE)
 @Builder
 @Entity
-@Table(name="cast")
+@Table(name="casts")
 public class Cast {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
@@ -19,5 +19,5 @@ public class Cast {
     @Column(name="name", nullable = false)
     String name;
     @Column(name = "url_image", nullable = false)
-    String urlImage;
+    String url_image;
 }

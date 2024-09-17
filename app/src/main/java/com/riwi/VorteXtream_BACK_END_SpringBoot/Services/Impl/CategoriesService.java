@@ -4,7 +4,11 @@ import com.riwi.VorteXtream_BACK_END_SpringBoot.Entities.Categories;
 import com.riwi.VorteXtream_BACK_END_SpringBoot.Repositories.CategoriesRepository;
 import com.riwi.VorteXtream_BACK_END_SpringBoot.Services.Interfaces.ICategoriesService;
 import jakarta.transaction.Transactional;
+import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.Optional;
 
 @Service
 public class CategoriesService implements ICategoriesService {
@@ -31,14 +35,31 @@ public class CategoriesService implements ICategoriesService {
 
     @Override
     @Transactional
-    public Categories update(Categories categories){
+    public List<Categories> readAll() throws Exception {
         try{
-            Categories categoryToUpdate = categoriesRepository.getReferenceById(categories.getId());
-            categoryToUpdate.setName(categories.getName());
-            categoryToUpdate.setDescription(categories.getDescription());
-            return categoriesRepository.save(categoryToUpdate);
+            return categoriesRepository.findAll();
+        }catch (DataAccessException e){
+            throw new Exception("ERROR: Director not have obtain from DATABASE");
+        }
+
+    }
+
+    @Override
+    @Transactional
+    public Categories update(String id, Categories categories){
+        try{
+            Optional<Categories> existingCategory = categoriesRepository.findById(id);
+            if (existingCategory.isPresent()){
+                Categories categoryToUpdate = existingCategory.get();
+                categoryToUpdate.setName(categories.getName());
+                categoryToUpdate.setDescription(categories.getDescription());
+                return categoriesRepository.save(categoryToUpdate);
+            } else {
+                throw new RuntimeException("Category not found or can't update");
+            }
+
         }catch (Exception e){
-            throw new RuntimeException("Cannot update category");
+            throw new RuntimeException("Category not found");
         }
     }
 

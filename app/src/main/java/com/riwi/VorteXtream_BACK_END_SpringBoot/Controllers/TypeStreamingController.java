@@ -3,6 +3,7 @@ package com.riwi.VorteXtream_BACK_END_SpringBoot.Controllers;
 
 import com.riwi.VorteXtream_BACK_END_SpringBoot.Entities.TypeStreaming;
 import com.riwi.VorteXtream_BACK_END_SpringBoot.Services.Impl.TypeStreamingService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -13,11 +14,12 @@ import java.util.List;
 @RequestMapping("api/type-streaming")
 public class TypeStreamingController {
 
-    private final TypeStreamingService typeStreamingService;
+    @Autowired
+    private TypeStreamingService typeStreamingService;
 
-    public TypeStreamingController(TypeStreamingService typeStreamingService){
-        this.typeStreamingService = typeStreamingService;
-    }
+//    public TypeStreamingController(TypeStreamingService typeStreamingService){
+//        this.typeStreamingService = typeStreamingService;
+//    }
 
     @PostMapping("/create")
     public ResponseEntity<TypeStreaming> createTypeStreaming(@RequestBody TypeStreaming typeStreaming) {

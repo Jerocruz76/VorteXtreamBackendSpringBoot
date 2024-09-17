@@ -1,5 +1,6 @@
 package com.riwi.VorteXtream_BACK_END_SpringBoot;
 
+import com.cloudinary.Cloudinary;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 

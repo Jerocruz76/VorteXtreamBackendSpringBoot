@@ -2,6 +2,7 @@ package com.riwi.VorteXtream_BACK_END_SpringBoot.Controllers;
 
 import com.riwi.VorteXtream_BACK_END_SpringBoot.Entities.Studios;
 import com.riwi.VorteXtream_BACK_END_SpringBoot.Services.Impl.StudiosService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -12,11 +13,12 @@ import java.util.List;
 @RequestMapping("api/studios")
 public class StudioController {
 
-    private final StudiosService studiosService;
+    @Autowired
+    private StudiosService studiosService;
 
-    public StudioController(StudiosService studiosService){
-        this.studiosService = studiosService;
-    }
+//    public StudioController(StudiosService studiosService){
+//        this.studiosService = studiosService;
+//    }
 
     @PostMapping("/create")
     public ResponseEntity<Studios> createStudio(@RequestBody Studios studios) {
