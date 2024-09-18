@@ -47,6 +47,42 @@ public class TypeStreamingService implements ITypeStreamingService {
     }
 
     @Override
+    @Transactional(readOnly = true)
+    public TypeStreaming getByName(String name) throws Exception {
+        try {
+            Optional<TypeStreaming> typeStreaming = typeStreamingRepository.findByName(name);
+
+            if (typeStreaming.isPresent()) {
+                return typeStreaming.get();
+            } else {
+                throw new RuntimeException("ERROR: TypeStreaming not found with name " + name);
+            }
+
+        } catch (Exception e) {
+            throw new Exception("ERROR: Could not retrieve TypeStreaming with name " + name, e);
+        }
+    }
+
+
+    @Override
+    @Transactional(readOnly = true)
+    public TypeStreaming getById(Long typeStreamingId) throws Exception {
+        try {
+            Optional<TypeStreaming> typeStreaming = typeStreamingRepository.findById(typeStreamingId);
+
+            if (typeStreaming.isPresent()) {
+                return typeStreaming.get();
+            } else {
+                throw new RuntimeException("ERROR: TypeStreaming not found with ID " + typeStreamingId);
+            }
+
+        } catch (Exception e) {
+            throw new Exception("ERROR: Could not retrieve TypeStreaming with ID " + typeStreamingId, e);
+        }
+    }
+
+
+    @Override
     @Transactional
     public TypeStreaming update(Long typeStreamingId, TypeStreaming updatedTypeStreaming) {
         try {

@@ -13,6 +13,10 @@ public interface IDirectorsService {
 
     List<Directors> readAll() throws Exception;
 
+    Directors getById(Long directorId) throws Exception;
+
+    Directors getByName(String name) throws Exception;
+
     boolean getDeleteById(Long directorsId);
 
 }

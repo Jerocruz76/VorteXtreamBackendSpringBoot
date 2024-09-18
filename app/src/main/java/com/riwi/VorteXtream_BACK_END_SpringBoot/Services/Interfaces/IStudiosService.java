@@ -12,6 +12,10 @@ public interface IStudiosService {
 
     List<Studios> readAll() throws Exception;
 
+    Studios getById(Long studioId) throws Exception;
+
+    Studios getByName(String name) throws Exception;
+
     boolean getDeleteById(Long studiosId);
 
 }
