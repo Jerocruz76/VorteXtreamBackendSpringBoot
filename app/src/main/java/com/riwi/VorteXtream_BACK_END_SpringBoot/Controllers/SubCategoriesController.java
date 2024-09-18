@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/subcategories")
+@RequestMapping("api/subCategories")
 public class SubCategoriesController {
 
     private final SubCategoriesService subCategoriesService;
@@ -32,7 +32,7 @@ public class SubCategoriesController {
         }
     }
 
-    @GetMapping("/read-all")
+    @GetMapping("/readAll")
     public ResponseEntity<List<SubCategories>> getAllSubCategories() {
         try {
             List<SubCategories> subCategories = subCategoriesService.readAll();
@@ -42,7 +42,7 @@ public class SubCategoriesController {
         }
     }
 
-    @DeleteMapping("/delete-by-id/{id}")
+    @DeleteMapping("/deleteById/{id}")
     public ResponseEntity<Void> deleteSubCategoriesById(@PathVariable Long id) {
         try {
             boolean isDeleted = subCategoriesService.getDeleteById(id);
@@ -58,7 +58,7 @@ public class SubCategoriesController {
         }
     }
 
-    @DeleteMapping("/delete-by-name/{name}")
+    @DeleteMapping("/deleteByName/{name}")
     public ResponseEntity<Void> deleteSubCategoriesByName(@PathVariable String name) {
         try {
             boolean isDeleted = subCategoriesService.deleteByName(name);
