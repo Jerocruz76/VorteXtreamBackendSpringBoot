@@ -1,6 +1,7 @@
 package com.riwi.VorteXtream_BACK_END_SpringBoot.Controllers;
 
 
+import com.riwi.VorteXtream_BACK_END_SpringBoot.Entities.Cast;
 import com.riwi.VorteXtream_BACK_END_SpringBoot.Entities.TypeStreaming;
 import com.riwi.VorteXtream_BACK_END_SpringBoot.Services.Impl.TypeStreamingService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,7 +23,7 @@ public class TypeStreamingController {
 //    }
 
     @PostMapping("/create")
-    public ResponseEntity<TypeStreaming> createTypeStreaming(@RequestBody TypeStreaming typeStreaming) {
+    public ResponseEntity<TypeStreaming> create(@RequestBody TypeStreaming typeStreaming) {
         try {
             TypeStreaming newTypeStreaming = typeStreamingService.create(typeStreaming);
             return new ResponseEntity<>(newTypeStreaming, HttpStatus.CREATED);
@@ -33,7 +34,7 @@ public class TypeStreamingController {
     }
 
     @GetMapping("/readAll")
-    public ResponseEntity<List<TypeStreaming>> getAllTypeStreamings() {
+    public ResponseEntity<List<TypeStreaming>> readAll() {
         try {
             List<TypeStreaming> typeStreamings = typeStreamingService.readAll();
             return new ResponseEntity<>(typeStreamings, HttpStatus.OK);
@@ -42,8 +43,28 @@ public class TypeStreamingController {
         }
     }
 
+    @GetMapping("/find/{id}")
+    public ResponseEntity<TypeStreaming> getById(@PathVariable("id") Long typeStreamingId) {
+        try {
+            TypeStreaming typeStreaming = typeStreamingService.getById(typeStreamingId);
+            return new ResponseEntity<>(typeStreaming, HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
+        }
+    }
+
+    @GetMapping("/findByName/{name}")
+    public ResponseEntity<TypeStreaming> getByName(@RequestParam("name") String name) {
+        try {
+            TypeStreaming typeStreaming = typeStreamingService.getByName(name);
+            return new ResponseEntity<>(typeStreaming, HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
+        }
+    }
+
     @PutMapping("/update/{id}")
-    public ResponseEntity<TypeStreaming> updateTypeStreaming(@PathVariable("id") Long typeStreamingId,
+    public ResponseEntity<TypeStreaming> update(@PathVariable("id") Long typeStreamingId,
                                                              @RequestBody TypeStreaming updatedTypeStreaming) {
         try {
             TypeStreaming updated = typeStreamingService.update(typeStreamingId, updatedTypeStreaming);
@@ -54,7 +75,7 @@ public class TypeStreamingController {
     }
 
     @DeleteMapping("/delete/{id}")
-    public ResponseEntity<HttpStatus> deleteTypeStreaming(@PathVariable("id") Long typeStreamingId) {
+    public ResponseEntity<HttpStatus> delete(@PathVariable("id") Long typeStreamingId) {
         try {
             boolean deleted = typeStreamingService.getDeleteById(typeStreamingId);
             if (deleted) {

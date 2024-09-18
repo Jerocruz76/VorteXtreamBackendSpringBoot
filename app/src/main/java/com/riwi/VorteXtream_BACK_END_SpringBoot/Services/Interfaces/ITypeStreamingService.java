@@ -12,6 +12,10 @@ public interface ITypeStreamingService {
 
     List <TypeStreaming> readAll() throws Exception;
 
+    TypeStreaming getById(Long typeStreamingId) throws Exception;
+
+    TypeStreaming getByName(String name) throws Exception;
+
     boolean getDeleteById(Long typeStreamingId);
 
 }
