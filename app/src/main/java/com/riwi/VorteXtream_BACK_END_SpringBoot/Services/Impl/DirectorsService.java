@@ -1,6 +1,7 @@
 package com.riwi.VorteXtream_BACK_END_SpringBoot.Services.Impl;
 
 import com.riwi.VorteXtream_BACK_END_SpringBoot.Entities.Directors;
+import com.riwi.VorteXtream_BACK_END_SpringBoot.Entities.Studios;
 import com.riwi.VorteXtream_BACK_END_SpringBoot.Repositories.DirectorsRepository;
 import com.riwi.VorteXtream_BACK_END_SpringBoot.Services.Interfaces.IDirectorsService;
 import org.springframework.dao.DataAccessException;
@@ -49,6 +50,42 @@ public class DirectorsService implements IDirectorsService {
         }
 
     }
+
+    @Override
+    @Transactional(readOnly = true)
+    public Directors getByName(String name) throws Exception {
+        try {
+            Optional<Directors> directors = directorsRepository.findByName(name);
+
+            if (directors.isPresent()) {
+                return directors.get();
+            } else {
+                throw new RuntimeException("ERROR: Director not found with name " + name);
+            }
+
+        } catch (Exception e) {
+            throw new Exception("ERROR: Could not retrieve Director with name " + name, e);
+        }
+    }
+
+
+    @Override
+    @Transactional(readOnly = true)
+    public Directors getById(Long directorId) throws Exception {
+        try {
+            Optional<Directors> directors = directorsRepository.findById(directorId);
+
+            if (directors.isPresent()) {
+                return directors.get();
+            } else {
+                throw new RuntimeException("ERROR: Studio not found with ID " + directorId);
+            }
+
+        } catch (Exception e) {
+            throw new Exception("ERROR: Could not retrieve Studio with ID " + directorId, e);
+        }
+    }
+
 
     @Override
     @Transactional

@@ -1,6 +1,7 @@
 package com.riwi.VorteXtream_BACK_END_SpringBoot.Controllers;
 
 import com.riwi.VorteXtream_BACK_END_SpringBoot.Entities.Studios;
+import com.riwi.VorteXtream_BACK_END_SpringBoot.Entities.TypeStreaming;
 import com.riwi.VorteXtream_BACK_END_SpringBoot.Services.Impl.StudiosService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -38,6 +39,26 @@ public class StudioController {
             return new ResponseEntity<>(studios, HttpStatus.OK);
         } catch (Exception e) {
             return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    @GetMapping("/find/{id}")
+    public ResponseEntity<Studios> getById(@PathVariable("id") Long studioId) {
+        try {
+            Studios studios = studiosService.getById(studioId);
+            return new ResponseEntity<>(studios, HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
+        }
+    }
+
+    @GetMapping("/findByName/{name}")
+    public ResponseEntity<Studios> getByName(@RequestParam("name") String name) {
+        try {
+            Studios studios = studiosService.getByName(name);
+            return new ResponseEntity<>(studios, HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
         }
     }
 

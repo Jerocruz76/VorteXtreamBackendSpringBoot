@@ -50,6 +50,41 @@ public class StudiosService implements IStudiosService {
     }
 
     @Override
+    @Transactional(readOnly = true)
+    public Studios getByName(String name) throws Exception {
+        try {
+            Optional<Studios> studios = studiosRepository.findByName(name);
+
+            if (studios.isPresent()) {
+                return studios.get();
+            } else {
+                throw new RuntimeException("ERROR: Studios not found with name " + name);
+            }
+
+        } catch (Exception e) {
+            throw new Exception("ERROR: Could not retrieve Studios with name " + name, e);
+        }
+    }
+
+
+    @Override
+    @Transactional(readOnly = true)
+    public Studios getById(Long studioId) throws Exception {
+        try {
+            Optional<Studios> studios = studiosRepository.findById(studioId);
+
+            if (studios.isPresent()) {
+                return studios.get();
+            } else {
+                throw new RuntimeException("ERROR: Studio not found with ID " + studioId);
+            }
+
+        } catch (Exception e) {
+            throw new Exception("ERROR: Could not retrieve Studio with ID " + studioId, e);
+        }
+    }
+
+    @Override
     @Transactional
     public Studios update(Long studiosId, Studios updatedStudios) {
         try {

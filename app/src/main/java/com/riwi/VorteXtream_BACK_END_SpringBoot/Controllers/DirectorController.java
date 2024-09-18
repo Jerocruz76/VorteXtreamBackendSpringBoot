@@ -1,6 +1,7 @@
 package com.riwi.VorteXtream_BACK_END_SpringBoot.Controllers;
 
 import com.riwi.VorteXtream_BACK_END_SpringBoot.Entities.Directors;
+import com.riwi.VorteXtream_BACK_END_SpringBoot.Entities.Studios;
 import com.riwi.VorteXtream_BACK_END_SpringBoot.Services.Impl.DirectorsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -37,6 +38,26 @@ public class DirectorController {
             return new ResponseEntity<>(directors, HttpStatus.OK);
         } catch (Exception e) {
             return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    @GetMapping("/find/{id}")
+    public ResponseEntity<Directors> getById(@PathVariable("id") Long directorId) {
+        try {
+            Directors directors = directorsService.getById(directorId);
+            return new ResponseEntity<>(directors, HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
+        }
+    }
+
+    @GetMapping("/findByName/{name}")
+    public ResponseEntity<Directors> getByName(@RequestParam("name") String name) {
+        try {
+            Directors directors = directorsService.getByName(name);
+            return new ResponseEntity<>(directors, HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
         }
     }
 
