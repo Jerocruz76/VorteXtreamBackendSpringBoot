@@ -32,7 +32,6 @@ com/riwi/VorteXtream_BACK_END_SpringBoot/Entities/TypeStreaming$TypeStreamingBui
 com/riwi/VorteXtream_BACK_END_SpringBoot/Services/Impl/ImageService.class
 com/riwi/VorteXtream_BACK_END_SpringBoot/Services/Interfaces/IStudiosService.class
 com/riwi/VorteXtream_BACK_END_SpringBoot/Repositories/StudiosRepository.class
-com/riwi/VorteXtream_BACK_END_SpringBoot/Security/WebSecurityConfig.class
 com/riwi/VorteXtream_BACK_END_SpringBoot/Services/Interfaces/ITypeStreamingService.class
 com/riwi/VorteXtream_BACK_END_SpringBoot/Entities/Categories.class
 com/riwi/VorteXtream_BACK_END_SpringBoot/Entities/Categories$CategoriesBuilder.class

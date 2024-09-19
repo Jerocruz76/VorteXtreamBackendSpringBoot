@@ -20,7 +20,6 @@
 /home/riwip3-053/Downloads/vorteXtream backend/VORTEXTREAM-BACK-END_-SPRING-BOOT-/app/src/main/java/com/riwi/VorteXtream_BACK_END_SpringBoot/Repositories/StudiosRepository.java
 /home/riwip3-053/Downloads/vorteXtream backend/VORTEXTREAM-BACK-END_-SPRING-BOOT-/app/src/main/java/com/riwi/VorteXtream_BACK_END_SpringBoot/Repositories/SubCategoriesRepository.java
 /home/riwip3-053/Downloads/vorteXtream backend/VORTEXTREAM-BACK-END_-SPRING-BOOT-/app/src/main/java/com/riwi/VorteXtream_BACK_END_SpringBoot/Repositories/TypeStreamingRepository.java
-/home/riwip3-053/Downloads/vorteXtream backend/VORTEXTREAM-BACK-END_-SPRING-BOOT-/app/src/main/java/com/riwi/VorteXtream_BACK_END_SpringBoot/Security/WebSecurityConfig.java
 /home/riwip3-053/Downloads/vorteXtream backend/VORTEXTREAM-BACK-END_-SPRING-BOOT-/app/src/main/java/com/riwi/VorteXtream_BACK_END_SpringBoot/Services/CRUD/Create.java
 /home/riwip3-053/Downloads/vorteXtream backend/VORTEXTREAM-BACK-END_-SPRING-BOOT-/app/src/main/java/com/riwi/VorteXtream_BACK_END_SpringBoot/Services/CRUD/Delete.java
 /home/riwip3-053/Downloads/vorteXtream backend/VORTEXTREAM-BACK-END_-SPRING-BOOT-/app/src/main/java/com/riwi/VorteXtream_BACK_END_SpringBoot/Services/CRUD/GetAll.java
