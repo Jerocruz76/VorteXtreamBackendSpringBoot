@@ -20,7 +20,7 @@ public class CastController {
     public ResponseEntity<Cast> create(@RequestBody Cast cast){
         try{
             Cast newCast = castService.create(cast);
-            return new ResponseEntity<>(HttpStatus.CREATED);
+            return new ResponseEntity<>(newCast, HttpStatus.CREATED);
         } catch (Exception e){
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
@@ -36,20 +36,20 @@ public class CastController {
         }
     }
 
-    @GetMapping("/{id}")
-    public ResponseEntity<List<Cast>> getById(@PathVariable("id") String castId){
+    @GetMapping("/getById/{id}")
+    public ResponseEntity<Cast> getById(@PathVariable("id") String castId){
         try{
-            List<Cast> casts = (List<Cast>) castService.getById(castId);
+            Cast casts = castService.getById(castId);
             return new ResponseEntity<>(casts, HttpStatus.OK);
         }catch (Exception e){
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 
-    @GetMapping("/{name}")
-    public ResponseEntity<List<Cast>> getByName(@PathVariable("name") String castName){
+    @GetMapping("/getByName/{name}")
+    public ResponseEntity<Cast> getByName(@PathVariable("name") String name){
         try{
-            List<Cast> casts = (List<Cast>) castService.getByName(castName);
+            Cast casts = castService.getByName(name);
             return new ResponseEntity<>(casts, HttpStatus.OK);
         }catch (Exception e){
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);

@@ -26,7 +26,6 @@ public class CastService implements ICastService {
         try{
             Cast createdCast = Cast.builder()
                     .name(cast.getName())
-                    .url_image(cast.getUrl_image())
                     .build();
             return castRepository.save(createdCast);
         }catch (Exception e){
@@ -84,7 +83,6 @@ public class CastService implements ICastService {
             if (existingCast.isPresent()){
                 Cast castToUpdate = existingCast.get();
                 castToUpdate.setName(cast.getName());
-                castToUpdate.setUrl_image(cast.getUrl_image());
                 return castRepository.save(castToUpdate);
             }else{
                 throw new RuntimeException("Can't find cast or can't update");

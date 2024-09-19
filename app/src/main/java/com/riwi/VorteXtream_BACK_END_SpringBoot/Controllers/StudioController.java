@@ -53,7 +53,7 @@ public class StudioController {
     }
 
     @GetMapping("/findByName/{name}")
-    public ResponseEntity<Studios> getByName(@RequestParam("name") String name) {
+    public ResponseEntity<Studios> getByName(@PathVariable("name") String name) {
         try {
             Studios studios = studiosService.getByName(name);
             return new ResponseEntity<>(studios, HttpStatus.OK);

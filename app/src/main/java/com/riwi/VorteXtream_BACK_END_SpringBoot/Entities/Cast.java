@@ -18,6 +18,4 @@ public class Cast {
     String id;
     @Column(name="name", nullable = false)
     String name;
-    @Column(name = "url_image", nullable = false)
-    String url_image;
 }
