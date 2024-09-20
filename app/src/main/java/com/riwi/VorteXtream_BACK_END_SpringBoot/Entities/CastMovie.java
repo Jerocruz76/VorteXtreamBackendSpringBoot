@@ -17,4 +17,7 @@ public class CastMovie {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
+
+    @Column(name="name", nullable = false)
+    String name;
 }
