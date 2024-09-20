@@ -1,7 +1,6 @@
 package com.riwi.VorteXtream_BACK_END_SpringBoot.Controllers;
 
 import com.riwi.VorteXtream_BACK_END_SpringBoot.Entities.Studios;
-import com.riwi.VorteXtream_BACK_END_SpringBoot.Entities.TypeStreaming;
 import com.riwi.VorteXtream_BACK_END_SpringBoot.Services.Impl.StudiosService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -16,10 +15,6 @@ public class StudioController {
 
     @Autowired
     private StudiosService studiosService;
-
-//    public StudioController(StudiosService studiosService){
-//        this.studiosService = studiosService;
-//    }
 
     @PostMapping("/create")
     public ResponseEntity<Studios> createStudio(@RequestBody Studios studios) {
