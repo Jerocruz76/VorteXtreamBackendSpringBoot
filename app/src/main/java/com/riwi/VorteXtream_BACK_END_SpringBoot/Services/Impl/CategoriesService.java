@@ -46,7 +46,7 @@ public class CategoriesService implements ICategoriesService {
 
     @Override
     @Transactional
-    public Categories update(String id, Categories categories){
+    public Categories update(Long id, Categories categories){
         try{
             Optional<Categories> existingCategory = categoriesRepository.findById(id);
             if (existingCategory.isPresent()){
@@ -65,10 +65,10 @@ public class CategoriesService implements ICategoriesService {
 
     @Override
     @Transactional
-    public boolean delete(String s) {
+    public boolean delete(Long id) {
         try{
-            categoriesRepository.deleteById(s);
-            return categoriesRepository.findById(s).isPresent();
+            categoriesRepository.deleteById(id);
+            return categoriesRepository.findById(id).isPresent();
         }catch (Exception e){
             throw new RuntimeException("Cannot delete by Id");
         }
@@ -76,9 +76,9 @@ public class CategoriesService implements ICategoriesService {
 
     @Override
     @Transactional
-    public Categories getById(String s) {
+    public Categories getById(Long id) {
         try{
-            return categoriesRepository.findById(s).orElseThrow();
+            return categoriesRepository.findById(id).orElseThrow();
         }catch (Exception e){
             throw new RuntimeException("Cannot find category");
         }

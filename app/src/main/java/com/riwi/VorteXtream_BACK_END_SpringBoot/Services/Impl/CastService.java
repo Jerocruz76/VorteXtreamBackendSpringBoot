@@ -1,7 +1,6 @@
 package com.riwi.VorteXtream_BACK_END_SpringBoot.Services.Impl;
 
 import com.riwi.VorteXtream_BACK_END_SpringBoot.Entities.Cast;
-import com.riwi.VorteXtream_BACK_END_SpringBoot.Entities.Categories;
 import com.riwi.VorteXtream_BACK_END_SpringBoot.Repositories.CastRepository;
 import com.riwi.VorteXtream_BACK_END_SpringBoot.Services.Interfaces.ICastService;
 import jakarta.transaction.Transactional;
@@ -35,7 +34,7 @@ public class CastService implements ICastService {
 
     @Override
     @Transactional
-    public boolean delete(String id) {
+    public boolean delete(Long id) {
         try{
             castRepository.deleteById(id);
             return castRepository.findById(id).isPresent();
@@ -57,7 +56,7 @@ public class CastService implements ICastService {
 
     @Override
     @Transactional
-    public Cast getById(String id) {
+    public Cast getById(Long id) {
         try{
             return castRepository.findById(id).orElseThrow();
         }catch (Exception e){
@@ -77,7 +76,7 @@ public class CastService implements ICastService {
 
     @Override
     @Transactional
-    public Cast update(String id, Cast cast) {
+    public Cast update(Long id, Cast cast) {
         try{
             Optional<Cast> existingCast = castRepository.findById(id);
             if (existingCast.isPresent()){

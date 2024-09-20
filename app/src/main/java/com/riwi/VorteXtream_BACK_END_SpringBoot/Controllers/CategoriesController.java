@@ -35,20 +35,20 @@ public class CategoriesController {
         }
     }
 
-    @GetMapping("/{id}")
-    public ResponseEntity<List<Categories>> getById(@PathVariable("id") String categoriesId){
+    @GetMapping("/getById/{id}")
+    public ResponseEntity<Categories> getById(@PathVariable("id") Long categoriesId){
         try{
-            List<Categories> categories = (List<Categories>) categoriesService.getById(categoriesId);
+            Categories categories = categoriesService.getById(categoriesId);
             return new ResponseEntity<>(categories, HttpStatus.OK);
         }catch (Exception e){
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 
-    @GetMapping("/{name}")
-    public ResponseEntity<List<Categories>> getByName(@PathVariable("name") String categoriesName){
+    @GetMapping("/getByName/{name}")
+    public ResponseEntity<Categories> getByName(@PathVariable("name") String categoriesName){
         try{
-            List<Categories> categories = (List<Categories>) categoriesService.getByName(categoriesName);
+            Categories categories = categoriesService.getByName(categoriesName);
             return new ResponseEntity<>(categories, HttpStatus.OK);
         }catch (Exception e){
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
@@ -56,7 +56,7 @@ public class CategoriesController {
     }
 
     @PutMapping("/update/{id}")
-    public ResponseEntity<Categories> update(@PathVariable("id") String categoriesId, @RequestBody Categories updatedCategory){
+    public ResponseEntity<Categories> update(@PathVariable("id") Long categoriesId, @RequestBody Categories updatedCategory){
         try{
             Categories update = categoriesService.update(categoriesId,updatedCategory);
             return new ResponseEntity<>(update, HttpStatus.OK);
@@ -66,7 +66,7 @@ public class CategoriesController {
     }
 
     @DeleteMapping("/delete/{id}")
-    public ResponseEntity<HttpStatus> delete(@PathVariable("id") String categoryId){
+    public ResponseEntity<HttpStatus> delete(@PathVariable("id") Long categoryId){
         try{
             boolean deleted = categoriesService.delete(categoryId);
             if (deleted){
