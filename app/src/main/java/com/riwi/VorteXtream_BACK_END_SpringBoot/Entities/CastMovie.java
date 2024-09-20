@@ -18,6 +18,15 @@ public class CastMovie {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
 
-    @Column(name="name", nullable = false)
-    String name;
+    @Column(name="studio_id", nullable = false)
+    int studioId;
+
+    @Column(name="cast_id", nullable = false)
+    int castId;
+
+    @Column(name="director_id", nullable = false)
+    int directorId;
+
+    @Column(name="media_id", nullable = false)
+    int mediaId;
 }

@@ -25,7 +25,10 @@ public class CastMovieService implements ICastMovieService {
     public CastMovie create(CastMovie castMovie) {
         try{
             CastMovie castMovieCreated = CastMovie.builder()
-                    .name(castMovie.getName())
+                    .studioId(castMovie.getStudioId())
+                    .castId(castMovie.getCastId())
+                    .directorId(castMovie.getDirectorId())
+                    .mediaId(castMovie.getMediaId())
                     .build();
             return castMovieRepository.save(castMovieCreated);
 
