@@ -14,8 +14,8 @@ import lombok.experimental.FieldDefaults;
 @Table(name="categories")
 public class Categories {
     @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
-    String id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    Long id;
     @Column(name="name", nullable = false)
     String name;
     @Column(name = "description", nullable = false)

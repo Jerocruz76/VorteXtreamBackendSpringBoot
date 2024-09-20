@@ -37,7 +37,7 @@ public class CastController {
     }
 
     @GetMapping("/getById/{id}")
-    public ResponseEntity<Cast> getById(@PathVariable("id") String castId){
+    public ResponseEntity<Cast> getById(@PathVariable("id") Long castId){
         try{
             Cast casts = castService.getById(castId);
             return new ResponseEntity<>(casts, HttpStatus.OK);
@@ -57,7 +57,7 @@ public class CastController {
     }
 
     @PutMapping("/update/{id}")
-    public ResponseEntity<Cast> update(@PathVariable("id") String castId, @RequestBody Cast updatedCast){
+    public ResponseEntity<Cast> update(@PathVariable("id") Long castId, @RequestBody Cast updatedCast){
         try{
             Cast update = castService.update(castId, updatedCast);
             return new ResponseEntity<>(update, HttpStatus.OK);
@@ -67,7 +67,7 @@ public class CastController {
     }
 
     @DeleteMapping("/delete/{id}")
-    public ResponseEntity<HttpStatus> delete(@PathVariable("id")String castId){
+    public ResponseEntity<HttpStatus> delete(@PathVariable("id")Long castId){
         try{
             boolean deleted = castService.delete(castId);
             if (deleted){

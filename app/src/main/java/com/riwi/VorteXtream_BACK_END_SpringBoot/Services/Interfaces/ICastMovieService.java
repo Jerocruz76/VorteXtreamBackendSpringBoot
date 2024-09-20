@@ -3,6 +3,7 @@ package com.riwi.VorteXtream_BACK_END_SpringBoot.Services.Interfaces;
 import com.riwi.VorteXtream_BACK_END_SpringBoot.Entities.CastMovie;
 import com.riwi.VorteXtream_BACK_END_SpringBoot.Entities.Directors;
 import com.riwi.VorteXtream_BACK_END_SpringBoot.Entities.TypeStreaming;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 

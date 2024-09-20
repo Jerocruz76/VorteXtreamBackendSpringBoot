@@ -14,8 +14,8 @@ import lombok.experimental.FieldDefaults;
 @Table(name="casts")
 public class Cast {
     @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
-    String id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    Long id;
     @Column(name="name", nullable = false)
     String name;
 }

@@ -9,10 +9,13 @@ import java.util.List;
 
 public interface ICastService extends
         Create<Cast, Cast>,
-        Update<String, Cast>,
+        Update<Long, Cast>,
         GetByName<Cast, String>,
-        GetById<Cast, String>,
-        Delete<String>{
+        GetById<Cast, Long>,
+        Delete<Long>{
     @Transactional
     List<Cast> readAll() throws Exception;
+
+    @Transactional
+    Cast getByName(String name);
 }

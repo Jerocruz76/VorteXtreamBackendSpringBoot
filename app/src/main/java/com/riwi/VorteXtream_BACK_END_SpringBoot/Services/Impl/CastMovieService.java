@@ -6,11 +6,13 @@ import com.riwi.VorteXtream_BACK_END_SpringBoot.Repositories.CastMovieRepository
 import com.riwi.VorteXtream_BACK_END_SpringBoot.Repositories.TypeStreamingRepository;
 import com.riwi.VorteXtream_BACK_END_SpringBoot.Services.Interfaces.ICastMovieService;
 import org.springframework.dao.DataAccessException;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
 
+@Service
 public class CastMovieService implements ICastMovieService {
 
     private final CastMovieRepository castMovieRepository;

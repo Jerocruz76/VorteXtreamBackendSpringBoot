@@ -7,10 +7,10 @@ import java.util.List;
 
 public interface ICategoriesService extends
         Create<Categories, Categories>,
-    Update<String, Categories>,
+    Update<Long, Categories>,
     GetByName<Categories, String>,
-    GetById<Categories, String>,
-        Delete<String> {
+    GetById<Categories, Long>,
+        Delete<Long> {
     @Transactional
     List<Categories> readAll() throws Exception;
 }
