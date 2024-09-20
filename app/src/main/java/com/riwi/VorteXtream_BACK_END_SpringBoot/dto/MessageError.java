@@ -1,9 +1,9 @@
 package com.riwi.VorteXtream_BACK_END_SpringBoot.dto;
 
-public class MessageIMG {
+public class MessageError {
     private String message;
 
-    public MessageIMG(String message) {
+    public MessageError(String message) {
         this.message = message;
     }
 

@@ -1,6 +1,4 @@
 package com.riwi.VorteXtream_BACK_END_SpringBoot.Controllers;
-
-
 import com.riwi.VorteXtream_BACK_END_SpringBoot.Entities.Categories;
 import com.riwi.VorteXtream_BACK_END_SpringBoot.Services.Impl.CategoriesService;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,7 +1,4 @@
 package com.riwi.VorteXtream_BACK_END_SpringBoot.Controllers;
-
-
-import com.riwi.VorteXtream_BACK_END_SpringBoot.Entities.Cast;
 import com.riwi.VorteXtream_BACK_END_SpringBoot.Entities.TypeStreaming;
 import com.riwi.VorteXtream_BACK_END_SpringBoot.Services.Impl.TypeStreamingService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,10 +14,6 @@ public class TypeStreamingController {
 
     @Autowired
     private TypeStreamingService typeStreamingService;
-
-//    public TypeStreamingController(TypeStreamingService typeStreamingService){
-//        this.typeStreamingService = typeStreamingService;
-//    }
 
     @PostMapping("/create")
     public ResponseEntity<TypeStreaming> create(@RequestBody TypeStreaming typeStreaming) {

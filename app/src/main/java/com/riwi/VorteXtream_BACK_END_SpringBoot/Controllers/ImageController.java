@@ -3,7 +3,7 @@ package com.riwi.VorteXtream_BACK_END_SpringBoot.Controllers;
 import com.riwi.VorteXtream_BACK_END_SpringBoot.Entities.ImageEntity;
 import com.riwi.VorteXtream_BACK_END_SpringBoot.Services.Impl.CloudinaryService;
 import com.riwi.VorteXtream_BACK_END_SpringBoot.Services.Impl.ImageService;
-import com.riwi.VorteXtream_BACK_END_SpringBoot.dto.MessageIMG;
+import com.riwi.VorteXtream_BACK_END_SpringBoot.dto.MessageError;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -36,22 +36,22 @@ public class ImageController {
     public ResponseEntity<?> upload(@RequestParam MultipartFile multipartFile) throws IOException {
         BufferedImage bi = ImageIO.read(multipartFile.getInputStream());
         if (bi == null){
-            return new ResponseEntity(new MessageIMG("Invalid image format"), HttpStatus.BAD_REQUEST);
+            return new ResponseEntity(new MessageError("Invalid image format"), HttpStatus.BAD_REQUEST);
         }
         Map result = cloudinaryService.upload(multipartFile);
         ImageEntity imageEntity = new ImageEntity((String)result.get("original_filename"),
                 (String) result.get("url"),
                 (String) result.get("public_id"));
         imageService.save(imageEntity);
-        return new ResponseEntity<>(new MessageIMG("Image saved"), HttpStatus.OK);
+        return new ResponseEntity<>(new MessageError("Image saved"), HttpStatus.OK);
     }
 
     @DeleteMapping("/deleteImage/{idImage}")
     public ResponseEntity<?> deleteImage(@PathVariable("idImage") int id) throws IOException {
-        if (!imageService.exists(id)) return new ResponseEntity<>(new MessageIMG("this img doesn't exists"), HttpStatus.BAD_REQUEST) ;
+        if (!imageService.exists(id)) return new ResponseEntity<>(new MessageError("this img doesn't exists"), HttpStatus.BAD_REQUEST) ;
         ImageEntity imageEntity = imageService.getOne(id).get();
         Map result = cloudinaryService.delete(imageEntity.getPublic_id());
         imageService.delete(id);
-        return new ResponseEntity<>(new MessageIMG("Image deleted"), HttpStatus.OK);
+        return new ResponseEntity<>(new MessageError("Image deleted"), HttpStatus.OK);
     }
 }
