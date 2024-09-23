@@ -1,11 +1,25 @@
-# Use an official Java runtime as a parent image
-FROM openjdk:17-jdk-slim
+# Step 1: Use a Maven image to build the project
+FROM maven:latest AS build
 
-# Set the working directory in the container
+# Set the working directory
 WORKDIR /app
 
-# Copy the Maven-built jar file into the container
-COPY target/VorteXtream-BACK_END-SpringBoot-0.0.1-SNAPSHOT.jar app.jar
+# Copy the pom.xml and the source code
+COPY pom.xml .
+COPY src ./src
 
-# Specify the command to run the app
+# Build the project
+RUN mvn clean package -DskipTests
+
+# Step 2: Use a smaller base image for the final image
+FROM openjdk:17-slim
+
+# Set the working directory
+WORKDIR /app
+
+# Copy the built JAR file from the build stage
+COPY --from=build /app/target/VorteXtream-BACK_END-SpringBoot-0.0.1-SNAPSHOT.jar app.jar
+
+# Specify the command to run the application
 ENTRYPOINT ["java", "-jar", "app.jar"]
+
