@@ -1,5 +1,5 @@
 # Step 1: Use a Maven image to build the project
-FROM maven:3.8.6-openjdk-17-slim AS build
+FROM maven:latest AS build
 
 # Set the working directory
 WORKDIR /app
