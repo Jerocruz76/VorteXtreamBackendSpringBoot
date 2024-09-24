@@ -2,6 +2,8 @@ package com.riwi.VorteXtream_BACK_END_SpringBoot.Adapters.Controllers;
 
 import com.riwi.VorteXtream_BACK_END_SpringBoot.Domain.Entities.Directors;
 import com.riwi.VorteXtream_BACK_END_SpringBoot.Domain.Services.Impl.DirectorsService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -17,6 +19,8 @@ public class DirectorController {
     private DirectorsService directorsService;
 
     @PostMapping("/create")
+    @Operation(summary = "Create directors", description = "an endpoint to create a directors")
+    @ApiResponse(responseCode = "201", description = "directors created successfuly")
     public ResponseEntity<Directors> create(@RequestBody Directors directors) {
         try {
             Directors newDirector = directorsService.create(directors);
@@ -27,6 +31,8 @@ public class DirectorController {
     }
 
     @GetMapping("/readAll")
+    @Operation(summary = "Read all directors", description = "an endpoint to read all directors")
+    @ApiResponse(responseCode = "200", description = "Read directors elements by Id successfully")
     public ResponseEntity<List<Directors>> getAll() {
         try {
             List<Directors> directors = directorsService.readAll();
@@ -37,6 +43,8 @@ public class DirectorController {
     }
 
     @GetMapping("/find/{id}")
+    @Operation(summary = "find directors by Id", description = "an endpoint to find directors by Id")
+    @ApiResponse(responseCode = "200", description = "the elements was find by Id successfully")
     public ResponseEntity<Directors> getById(@PathVariable("id") Long directorId) {
         try {
             Directors directors = directorsService.getById(directorId);
@@ -47,6 +55,8 @@ public class DirectorController {
     }
 
     @GetMapping("/findByName/{name}")
+    @Operation(summary = "find directors by name", description = "an endpoint to find directors by name")
+    @ApiResponse(responseCode = "200", description = "the elements was find by name successfully")
     public ResponseEntity<Directors> getByName(@RequestParam("name") String name) {
         try {
             Directors directors = directorsService.getByName(name);
@@ -57,6 +67,8 @@ public class DirectorController {
     }
 
     @PutMapping("/update/{id}")
+    @Operation(summary = "Update directors by Id", description = "an endpoint to Update directors by Id")
+    @ApiResponse(responseCode = "200", description = "the elements was Update by Id successfully")
     public ResponseEntity<Directors> update(@PathVariable("id") Long directorId,
                                                 @RequestBody Directors updatedDirector) {
         try {
@@ -68,6 +80,8 @@ public class DirectorController {
     }
 
     @DeleteMapping("/delete/{id}")
+    @Operation(summary = "Delete directors by Id", description = "an endpoint to Delete directors by Id")
+    @ApiResponse(responseCode = "204", description = "Delete the elements by Id successfully")
     public ResponseEntity<HttpStatus> delete(@PathVariable("id") Long directorId) {
         try {
             boolean deleted = directorsService.getDeleteById(directorId);
