@@ -65,7 +65,7 @@ public class CategoriesController {
         }
     }
 
-    @PutMapping("/update/{id}")
+    @PatchMapping("/update/{id}")
     @Operation(summary = "Update categories by Id", description = "an endpoint to Update categories by Id")
     @ApiResponse(responseCode = "200", description = "the elements was Update by Id successfully")
     public ResponseEntity<Categories> update(@PathVariable("id") Long categoriesId, @RequestBody Categories updatedCategory){

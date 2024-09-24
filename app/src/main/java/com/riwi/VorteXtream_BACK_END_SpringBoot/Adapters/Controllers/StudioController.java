@@ -67,7 +67,7 @@ public class StudioController {
         }
     }
 
-    @PutMapping("/update/{id}")
+    @PatchMapping("/update/{id}")
     @Operation(summary = "Update studios by Id", description = "an endpoint to Update studios by Id")
     @ApiResponse(responseCode = "200", description = "the elements was Update by Id successfully")
     public ResponseEntity<Studios> updateStudio(@PathVariable("id") Long studiosId,

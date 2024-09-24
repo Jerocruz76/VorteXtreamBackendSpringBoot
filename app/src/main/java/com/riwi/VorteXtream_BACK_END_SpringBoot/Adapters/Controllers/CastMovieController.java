@@ -57,7 +57,7 @@ public class CastMovieController {
         }
     }
 
-    @PutMapping("/update/{id}")
+    @PatchMapping("/update/{id}")
     @Operation(summary = "Update cast-movie by Id", description = "an endpoint to Update cast-movie by Id")
     @ApiResponse(responseCode = "200", description = "the elements was Update by Id successfully")
     public ResponseEntity<CastMovie> update(@PathVariable("id") Long castMovieId,

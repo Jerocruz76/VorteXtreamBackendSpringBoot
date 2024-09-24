@@ -66,7 +66,7 @@ public class DirectorController {
         }
     }
 
-    @PutMapping("/update/{id}")
+    @PatchMapping("/update/{id}")
     @Operation(summary = "Update directors by Id", description = "an endpoint to Update directors by Id")
     @ApiResponse(responseCode = "200", description = "the elements was Update by Id successfully")
     public ResponseEntity<Directors> update(@PathVariable("id") Long directorId,

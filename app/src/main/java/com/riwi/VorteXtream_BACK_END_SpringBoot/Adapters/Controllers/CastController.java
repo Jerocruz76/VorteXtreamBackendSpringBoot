@@ -66,7 +66,7 @@ public class CastController {
         }
     }
 
-    @PutMapping("/update/{id}")
+    @PatchMapping("/update/{id}")
     @Operation(summary = "Update cast by Id", description = "an endpoint to Update cast by Id")
     @ApiResponse(responseCode = "200", description = "Update the elements by Id successfully")
     public ResponseEntity<Cast> update(@PathVariable("id") Long castId, @RequestBody Cast updatedCast){

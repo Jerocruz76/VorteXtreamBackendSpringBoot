@@ -66,7 +66,7 @@ public class MediaController {
         }
     }
 
-    @PutMapping("/update/{id}")
+    @PatchMapping("/update/{id}")
     @Operation(summary = "Update media by Id", description = "an endpoint to Update media by Id")
     @ApiResponse(responseCode = "200", description = "the elements was Update by Id successfully")
     public ResponseEntity<MediaEntity> update(@PathVariable("id") Integer id, @RequestBody MediaEntity mediaToUpdate){
