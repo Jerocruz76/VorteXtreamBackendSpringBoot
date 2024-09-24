@@ -3,6 +3,8 @@ package com.riwi.VorteXtream_BACK_END_SpringBoot.Adapters.Controllers;
 
 import com.riwi.VorteXtream_BACK_END_SpringBoot.Domain.Entities.MediaEntity;
 import com.riwi.VorteXtream_BACK_END_SpringBoot.Domain.Services.Impl.MediaService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -17,6 +19,8 @@ public class MediaController {
     private MediaService mediaService;
 
     @PostMapping("/create")
+    @Operation(summary = "Create media", description = "an endpoint to create a media")
+    @ApiResponse(responseCode = "201", description = "media created successfuly")
     public ResponseEntity<MediaEntity> create(@RequestBody MediaEntity media){
         try{
             MediaEntity newMedia = mediaService.create(media);
@@ -27,6 +31,8 @@ public class MediaController {
     }
 
     @GetMapping("/readAll")
+    @Operation(summary = "Read all media", description = "an endpoint to read all media")
+    @ApiResponse(responseCode = "200", description = "Read all media elements successfully")
     public ResponseEntity<List<MediaEntity>> readAll(){
         try {
             List<MediaEntity> mediaList = mediaService.readAll();
@@ -37,6 +43,8 @@ public class MediaController {
     }
 
     @GetMapping("/findByTitle/{title}")
+    @Operation(summary = "find media by title", description = "an endpoint to find media by title")
+    @ApiResponse(responseCode = "200", description = "the elements was find by title successfully")
     public ResponseEntity<MediaEntity> getByTitle(@PathVariable("title") String title){
         try{
             MediaEntity media = mediaService.getByTitle(title);
@@ -47,6 +55,8 @@ public class MediaController {
     }
 
     @GetMapping("/findById/{id}")
+    @Operation(summary = "find media by Id", description = "an endpoint to find media by Id")
+    @ApiResponse(responseCode = "200", description = "the elements was find by Id successfully")
     public ResponseEntity<MediaEntity> getById(@PathVariable("id")Integer id){
         try {
             MediaEntity media = mediaService.getById(id);
@@ -57,6 +67,8 @@ public class MediaController {
     }
 
     @PutMapping("/update/{id}")
+    @Operation(summary = "Update media by Id", description = "an endpoint to Update media by Id")
+    @ApiResponse(responseCode = "200", description = "the elements was Update by Id successfully")
     public ResponseEntity<MediaEntity> update(@PathVariable("id") Integer id, @RequestBody MediaEntity mediaToUpdate){
         try{
             MediaEntity updatedMedia = mediaService.update(id, mediaToUpdate);
@@ -67,6 +79,8 @@ public class MediaController {
     }
 
     @DeleteMapping("/deleteByTitle/{title}")
+    @Operation(summary = "Delete media by title", description = "an endpoint to Delete media by title")
+    @ApiResponse(responseCode = "204", description = "Delete the elements by title successfully")
     public ResponseEntity<HttpStatus> delete(@PathVariable("title") String title){
         try{
             boolean mediaToDelete = mediaService.getDeleteTitle(title);

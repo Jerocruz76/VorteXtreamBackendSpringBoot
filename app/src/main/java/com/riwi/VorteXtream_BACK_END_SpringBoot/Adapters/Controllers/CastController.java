@@ -32,7 +32,7 @@ public class CastController {
 
     @GetMapping("/readAll")
     @Operation(summary = "Read all cast", description = "an endpoint to read all cast")
-    @ApiResponse(responseCode = "200", description = "read all elements successfully")
+    @ApiResponse(responseCode = "200", description = "Read all elements successfully")
     public ResponseEntity<List<Cast>> readAll(){
         try{
             List<Cast> allCasts = castService.readAll();
