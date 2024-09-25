@@ -70,7 +70,7 @@ public class TypeStreamingController {
     @Operation(summary = "Update TypeStreaming by Id", description = "an endpoint to Update TypeStreaming by Id")
     @ApiResponse(responseCode = "200", description = "the elements was Update by Id successfully")
     public ResponseEntity<TypeStreaming> update(@PathVariable("id") Long typeStreamingId,
-                                                             @RequestBody TypeStreaming updatedTypeStreaming) {
+                                                @RequestBody TypeStreaming updatedTypeStreaming) {
         try {
             TypeStreaming updated = typeStreamingService.update(typeStreamingId, updatedTypeStreaming);
             return new ResponseEntity<>(updated, HttpStatus.OK);
